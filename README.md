@@ -1,6 +1,4 @@
-# vuejs-cnode
-
-> A Vue.js project
+A Vuejs project by using API of [CNode](https://cnodejs.org/) that is a website
 
 ## Build Setup
 
