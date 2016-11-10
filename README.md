@@ -1,4 +1,4 @@
-A Vuejs project by using API of [CNode](https://cnodejs.org/) that is a website
+A Vuejs project by using API of [CNode](https://cnodejs.org/) that is a website (progress : developing)
 
 ## Build Setup
 

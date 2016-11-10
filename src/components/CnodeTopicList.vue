@@ -7,8 +7,8 @@
             </div>
             <ul class="main">
                 <li>
-                <span v-if="list.good||list.top" class="good">{{list.tab | filterTab(list.top,list.good)}}</span>
-                <span v-else class="tab">{{list.tab | filterTab(list.top,list.good)}}</span>
+                <span v-if="list.good||list.top" class="good">{{list.tab | tab(list.top,list.good)}}</span>
+                <span v-else class="tab">{{list.tab | tab(list.top,list.good)}}</span>
                 <span class="loginname">{{list.author.loginname}}</span>
                 </li>
                 <li>{{list.title}}</li>
@@ -19,58 +19,62 @@
             </div>
         </router-link>
     </div>
-    <div v-else>
-        没有数据
+    <div class="error" v-else>
+        {{errorMsg}}
     </div>
+    <router-view></router-view>
 </div>
 </template>
 
 
 <style lang="stylus" scoped>
    .list 
-    a
-        display block
-        display flex 
-        border-bottom 1px solid #f0f0f0
-        &:visited
-            color #888
-        .avatar 
-            flex 1
-            display flex
-            align-items center
-            justify-content center
-            img 
-                width 50%
-        .main
-            flex 4
-            color #333
-            li 
-                line-height 20px
-                margin 8px 0
-            .good
-                padding 4px 
-                border-radius 4px 
-                background #80bd01
-                color #fff
-                text-align center
-                font-weight bold
-            .tab
-                padding 4px 
-                border-radius 4px 
-                text-align center
-                background #e5e5e5
-                color #999
-                font-weight bold
-        .tips
-            flex 1
-            display flex
-            justify-content center
-            align-items center
-            color #333
-            .reply-tips
-                color #9e78c0
-            .visit-tips
-                color #b4b4b4
+        a
+            display flex 
+            border-bottom 1px solid #f0f0f0
+            &:visited
+                color #888
+            .avatar 
+                flex 1
+                display flex
+                align-items center
+                justify-content center
+                img 
+                    width 50%
+            .main
+                flex 4
+                color #333
+                li 
+                    line-height 20px
+                    margin 8px 0
+                .good
+                    padding 4px 
+                    border-radius 4px 
+                    background #80bd01
+                    color #fff
+                    text-align center
+                    font-weight bold
+                .tab
+                    padding 4px 
+                    border-radius 4px 
+                    text-align center
+                    background #e5e5e5
+                    color #999
+                    font-weight bold
+            .tips
+                flex 1
+                display flex
+                justify-content center
+                align-items center
+                color #333
+                .reply-tips
+                    color #9e78c0
+                .visit-tips
+                    color #b4b4b4
+    .error
+        width 100%
+        line-height 100px
+        text-align center
 </style>
 
 <script>
@@ -79,11 +83,16 @@
         data(){
             return {
                 listData:[],
-                isSuccess:false
+                isSuccess:false,
+                errorMsg:'加载中...',
+                page:1,
+                limit:10,
+                tab:'all',
+                mdrender:false
             }
         },
         filters:{
-            filterTab(val,isTop,isGood){
+            tab(val,isTop,isGood){
                 if(isTop) return '置顶'
                 if(isGood) return '精华'
                 let tab = {
@@ -92,7 +101,7 @@
                     'job':'招聘',
                     'share':'分享'
                 }
-                return tab[val]
+                return tab[val]||'未知'
             },
             timeAgo(val){
                 let nowDate = new Date();
@@ -119,7 +128,9 @@
                 }else{
                     return Math.floor(diffSeconds/years)+'年前'
                 }
-
+            },
+            getLastReplyUser(val){
+                
             }
         },
         computed:{
@@ -141,16 +152,34 @@
 
         },
         watch:{
-
+            $route(){
+                api.getTopics({
+                    tab:this.tab,
+                    page:this.page,
+                    limit:this.limit,
+                    mdrender:this.mdrender
+                })
+                .then((res)=>{
+                    this.listData=res.data.data;
+                    this.isSuccess=res.data.success;
+                })
+                .catch((err)=>{
+                    
+                })
+            }
         },
         created(){
-            api.getTopics()
-            .then((res) => {
-                this.listData=res.data.data;
-                this.isSuccess=res.data.success;
-            })
+             api.getTopics({
+                 tab:this.tab,
+                 page:this.page,
+                 limit:this.limit,
+                 mdrender:this.mdrender
+             }).then((res) => {
+                    this.listData=res.data.data;
+                    this.isSuccess=res.data.success;
+                })
             .catch((err) => {
-            
+                    this.errorMsg=err;
             });
         }
     }

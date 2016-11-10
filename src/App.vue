@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <div class="fixed">
       <cnode-header></cnode-header>
       <cnode-nav></cnode-nav>
-    </div>
-    <div class="wrapper">
       <cnode-topic-list></cnode-topic-list>
-    </div>
   </div>
 </template>
 

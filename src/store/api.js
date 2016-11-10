@@ -11,14 +11,14 @@ export default {
     mdrender String 当为 false 时，不渲染。默认为 true，渲染出现的所有 markdown 格式文本。
     */    
     getTopics(params){
-        return axios.get(`${baseUrl}/topics`)
+        return axios.get(`${baseUrl}/topics?tab=${params.tab}&page=${params.page}&limit=${params.limit}&mdrender=${params.mdrender}`)
     },
     /*主题详情
     mdrender String 当为 false 时，不渲染。默认为 true，渲染出现的所有 markdown 格式文本。
     accesstoken String 当需要知道一个主题是否被特定用户收藏时，才需要带此参数。会影响返回值中的 is_collect 值。
     */
     getTopic(params){
-        return axios.get(`${baseUrl}/topic/${params.accesstoken}`)
+        return axios.get(`${baseUrl}/topic/${params.accesstoken}?mdrender=${params.mdrender}`)
     },
     /*新建主题
     accesstoken String 用户的 accessToken
@@ -29,7 +29,7 @@ export default {
     {success: true, topic_id: '5433d5e4e737cbe96dcef312'}
     */
     createTopic(params){
-        return axios.post('/topics',params)
+        return axios.post(`${baseUrl}/topics`,params)
     },
     /*编辑主题
     accesstoken String 用户的 accessToken
@@ -41,7 +41,7 @@ export default {
     {success: true, topic_id: '5433d5e4e737cbe96dcef312'}
     */
     updateTopic(params){
-        return axios.post('/topics/update',params)
+        return axios.post(`${baseUrl}/topics/update`,params)
     },
     /*收藏主题
     接收 post 参数
@@ -51,7 +51,7 @@ export default {
     {"success": true}   
     */
     collectTopic(params){
-        return axios.post('/topic_collect/collect',params)
+        return axios.post(`${baseUrl}/topic_collect/collect`,params)
     },
     /*收藏主题
     接收 post 参数
@@ -61,11 +61,11 @@ export default {
     {"success": true}   
     */
     deCollectTopic(params){
-        return axios.post('/topic_collect/de_collect',params)
+        return axios.post(`${baseUrl}/topic_collect/de_collect`,params)
     },
     /*用户收藏的主题*/
     getCollectTopics(params){
-        return axios.get(`/topic_collect/${params.loginname}`)
+        return axios.get(`${baseUrl}/topic_collect/${params.loginname}`)
     },
     /*新建评论
     accesstoken String 用户的 accessToken
@@ -75,7 +75,7 @@ export default {
     {success: true, reply_id: '5433d5e4e737cbe96dcef312'}  
     */
     createReply(params){
-        return axios.post(`/topic/${params.topic_id}/replies`,params)
+        return axios.post(`${baseUrl}/topic/${params.topic_id}/replies`,params)
     },
     /*点赞评论
     accesstoken String
@@ -84,11 +84,11 @@ export default {
     {"success": true, "action": "down"}
     */
     upReply(params){
-        return axios.post(`/reply/${params.reply_id}/ups`,params)
+        return axios.post(`${baseUrl}/reply/${params.reply_id}/ups`,params)
     },
     /*用户详情*/
     getUser(params){
-        return axios.get(`/user/${params.loginname}`)
+        return axios.get(`${baseUrl}/user/${params.loginname}`)
     },
     /*验证 accessToken 的正确性
     accesstoken String 用户的 accessToken
@@ -97,7 +97,7 @@ export default {
     {success: true, loginname: req.user.loginname}
     */
     checkAccessToken(params){
-        return axios.post('/accesstoken',params)
+        return axios.post(`${baseUrl}/accesstoken`,params)
     },
     /*获取未读消息数
     accesstoken String
@@ -105,7 +105,7 @@ export default {
     { data: 3 }
     */
     getUnreadMessages(params){
-        return axios.get('/message/count')
+        return axios.get(`${baseUrl}/message/count?accesstoken=${params.accesstoken}`)
     },
     /*获取已读和未读消息
     accesstoken String
@@ -141,7 +141,7 @@ export default {
         }
     */
     getMessages(params){
-        return axios.get('/messages')
+        return axios.get(`${baseUrl}/messages?accesstoken=${params.accesstoken}&mdrender=${params.mdrender}`)
     },
     /*标记全部已读
     accesstoken String
@@ -154,6 +154,6 @@ export default {
         }
     */
     remarkTopic(params){
-        return axios.post('/message/mark_all',params)
+        return axios.post(`${baseUrl}/message/mark_all`,params)
     }  
 }  

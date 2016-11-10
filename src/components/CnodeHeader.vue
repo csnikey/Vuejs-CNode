@@ -1,19 +1,18 @@
 <template>
-    <div>
-        <ul class="nav">
-            <li class="logo"><img src="../assets/logo.svg" alt="cnode"></li>
-            <li class="search"><input type="text"></li>
-            <li class="send"><a href="javascript:;">发布</a></li>
-        </ul>
-    </div>
+    <ul class="header">
+        <li class="logo"><img src="../assets/logo.svg" alt="cnode"></li>
+        <li class="search"><input type="text"></li>
+        <li class="send"><a href="javascript:;">发布</a></li>
+    </ul>
 </template>
 
 <style lang="stylus" scoped>
-    .nav
+    .header
         background #444
         display flex
         height 50px
         line-height 50px
+        width 100%
         li 
             display flex
             justify-content center
