@@ -1,5 +1,4 @@
-A Vuejs project by using API of [CNode](https://cnodejs.org/) that is a website (progress : developing)
-
+A Vuejs project by using the API of [CNode](https://cnodejs.org/) that is a community about Node.js (Vue2+Vue-router2,todo:Vuex2)
 ## Build Setup
 
 ``` bash
