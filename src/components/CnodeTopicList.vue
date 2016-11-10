@@ -22,7 +22,6 @@
     <div class="error" v-else>
         {{errorMsg}}
     </div>
-    <router-view></router-view>
 </div>
 </template>
 
@@ -87,7 +86,6 @@
                 errorMsg:'加载中...',
                 page:1,
                 limit:10,
-                tab:'all',
                 mdrender:false
             }
         },
@@ -149,12 +147,9 @@
             }
         },
         methods:{
-
-        },
-        watch:{
-            $route(){
+            fetch(){
                 api.getTopics({
-                    tab:this.tab,
+                    tab:this.$route.params.tab,
                     page:this.page,
                     limit:this.limit,
                     mdrender:this.mdrender
@@ -168,19 +163,13 @@
                 })
             }
         },
+        watch:{
+            $route(){
+                this.fetch();
+            }
+        },
         created(){
-             api.getTopics({
-                 tab:this.tab,
-                 page:this.page,
-                 limit:this.limit,
-                 mdrender:this.mdrender
-             }).then((res) => {
-                    this.listData=res.data.data;
-                    this.isSuccess=res.data.success;
-                })
-            .catch((err) => {
-                    this.errorMsg=err;
-            });
+            this.fetch()
         }
     }
 </script>

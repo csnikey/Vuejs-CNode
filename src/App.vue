@@ -1,15 +1,13 @@
 <template>
   <div id="app">
       <cnode-header></cnode-header>
-      <cnode-nav></cnode-nav>
-      <cnode-topic-list></cnode-topic-list>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
 import CnodeHeader from './components/CnodeHeader.vue'
-import CnodeNav from './components/CnodeNav.vue'
-import CnodeTopicList from './components/CnodeTopicList.vue'
+import CnodeMain from './views/CnodeMain.vue'
 export default {
   data(){
     return {
@@ -18,8 +16,7 @@ export default {
   },
   components:{
     CnodeHeader,
-    CnodeNav,
-    CnodeTopicList
+    CnodeMain
   }
 }
 </script>

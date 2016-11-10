@@ -17,10 +17,10 @@ export default {
             detail:{}
         }
     },
-    watch:{
-        $route(){
+    methods:{
+        fetch(){
             api.getTopic({
-                'accesstoken':this.$route.params.id,
+                'accesstoken':this.$route.params.topicId,
                 'mdrender':true
             })
             .then((res)=>{
@@ -34,8 +34,13 @@ export default {
             })
         }
     },
+    watch:{
+        $route(){
+            this.fetch();
+        }
+    },
     created(){
-
+        this.fetch()
     }
 }    
 </script>

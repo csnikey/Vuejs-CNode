@@ -2,11 +2,11 @@
     <ul class="nav">
         <li @click="tabListDisplay=!tabListDisplay">首页 <i class="triangle"></i>
             <ul v-show="tabListDisplay">
-                <li>全部</li>
-                <li>精华</li>
-                <li>分享</li>
-                <li>问答</li>
-                <li>招聘</li>
+                <router-link tag="li" to="/topics/all">全部</router-link>
+                <router-link tag="li" to="/topics/good">精华</router-link>
+                <router-link tag="li" to="/topics/share">分享</router-link>
+                <router-link tag="li" to="/topics/ask">问答</router-link>
+                <router-link tag="li" to="/topics/job">招聘</router-link>
             </ul>
         </li>
         <li>消息<span class="message" v-if="messageCount">{{messageCount}}</span></li>

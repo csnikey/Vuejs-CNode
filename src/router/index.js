@@ -3,16 +3,28 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import CnodeTopicList from '../components/CnodeTopicList.vue'
+import CnodeMain from '../views/CnodeMain.vue'
 import CnodeDetail from '../views/CnodeDetail.vue'
+import Cnode404 from '../views/Cnode404.vue'
+import CnodeDUser from '../views/CnodeUser.vue'
+
 
 export default new VueRouter({
   routes: [
-      { 
-          path: '/topic/:id', component: CnodeDetail
+      {
+          path: '/',redirect: '/topics/all'
       },
       {
-          path: '/topic/:tab',component: CnodeTopicList
+          path: '/topics/:tab',component: CnodeMain
+      },
+      { 
+          path: '/topic/:topicId', component: CnodeDetail
+      },
+      {
+          path: '*',components:Cnode404
+      },
+      {
+          path: '/user/:userId'
       }
   ]
 })
