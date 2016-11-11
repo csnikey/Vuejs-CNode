@@ -1,6 +1,6 @@
 <template>
     <ul class="nav">
-        <li @click="tabListDisplay=!tabListDisplay">首页 <i class="triangle"></i>
+        <li @click="tabListDisplay=!tabListDisplay">{{currentTab}}<i class="triangle"></i>
             <ul v-show="tabListDisplay">
                 <router-link tag="li" to="/topics/all">全部</router-link>
                 <router-link tag="li" to="/topics/good">精华</router-link>
@@ -9,11 +9,11 @@
                 <router-link tag="li" to="/topics/job">招聘</router-link>
             </ul>
         </li>
-        <li>消息<span class="message" v-if="messageCount">{{messageCount}}</span></li>
+        <li @click="getMessage">消息<span class="message" v-if="messageCount">{{messageCount}}</span></li>
         <li @click="aboutMeDisplay=!aboutMeDisplay">我<i class="triangle"></i>
             <ul v-show="aboutMeDisplay">
-                <li>我的主页</li>
-                <li>退出</li> 
+                <router-link tag="li" :to="'/user/'+loginname">我的主页</router-link>
+                <li @click="loginOut">退出</li> 
             </ul>
         </li>
     </ul>
@@ -64,8 +64,35 @@
                 aboutMeDisplay:false
             }
         },
-        methods(){
+        computed:{
+            currentTab(){
+                let tab = {
+                    'ask':'问答',
+                    'good':'精华',
+                    'job':'招聘',
+                    'share':'分享'
+                }
+                return tab[this.$route.params.tab]||'全部'
+            },
+            looginname(){
+                api.checkAccessToken({
+                    accesstoken:'1debe75e-7140-4e68-8475-48a1691fe591'
+                })
+                .then((res)=>{
+                    return res['data']['loginname']
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+            }
+        },
+        methods:{
+            loginOut(){
+                
+            },
+            getMessage(){
 
+            }
         },
         created(){
             /*storage('cnodeAccesstoken', (err,cnodeAccesstoken)=>{

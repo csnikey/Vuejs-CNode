@@ -86,7 +86,7 @@
                 errorMsg:'加载中...',
                 page:1,
                 limit:10,
-                mdrender:false
+                mdrender:true
             }
         },
         filters:{

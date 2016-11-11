@@ -1,5 +1,5 @@
 <template>
-    <div v-html="detail.content">
+    <div>
     {{detail.content}}
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
         fetch(){
             api.getTopic({
                 'accesstoken':this.$route.params.topicId,
-                'mdrender':true
+                'mdrender':false
             })
             .then((res)=>{
                 let result = res.data;
