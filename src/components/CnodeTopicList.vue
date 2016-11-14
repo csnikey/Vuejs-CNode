@@ -165,6 +165,7 @@
         },
         watch:{
             $route(){
+                this.isSuccess = false;
                 this.fetch();
             }
         },
