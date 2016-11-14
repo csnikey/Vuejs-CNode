@@ -11,6 +11,7 @@
 
 <script>
 import api from '../store/api.js'
+import user from '../store/user.js'
     export default{
         data(){
             return{
@@ -20,7 +21,7 @@ import api from '../store/api.js'
         watch:{
             $route(){
                 api.getMessages({
-                    accesstoken:'1debe75e-7140-4e68-8475-48a1691fe591'
+                    accesstoken: user.getUserInfo().accesstoken
                 })
                 .then((res)=>{
                     console.log(res);

@@ -8,7 +8,7 @@ import CnodeDetail from '../views/CnodeDetail.vue'
 import Cnode404 from '../views/Cnode404.vue'
 import CnodeUser from '../views/CnodeUser.vue'
 import CnodeMessages from '../views/CnodeMessages.vue'
-
+import CnodeLogin from '../views/CnodeLogin.vue'
 
 export default new VueRouter({
   routes: [
@@ -25,10 +25,13 @@ export default new VueRouter({
           path: '/user/:loginname',component: CnodeUser
       },
       {
-          path: '*',component:Cnode404
+          path: '/login' , component: CnodeLogin
       },
       {
           path: '/message/:accesstoken',component:CnodeMessages
+      },
+      {
+          path: '*',component:Cnode404
       }
   ]
 })
