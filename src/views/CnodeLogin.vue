@@ -59,17 +59,15 @@
         methods:{
             login(){
                 this.loginStatus='登录中..';
-                let timer = setTimeout(function() {
-                    alert('登录失败,网络错误')
-                },5000);
                 api.checkAccessToken({
                     'accesstoken':this.accesstoken
                 })
                 .then((res)=>{
-                    clearTimeout(timer)
                     if(res.data.success){
                         user.setUserInfo(this.accesstoken);
-                        this.$router.go(-1);
+                        this.$router.push({
+                            path:'/topics/all'
+                        });
                     }else{
                         alert('登录失败，请检查accesstoken是否输入正确');
                         this.loginStatus = '登录';

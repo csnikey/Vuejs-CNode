@@ -66,7 +66,9 @@
             return {
                 messageCount:0,
                 tabListDisplay:false,
-                aboutMeDisplay:false
+                aboutMeDisplay:false,
+                loginname :'',
+                accesstoken :''
             }
         },
         computed:{
@@ -78,51 +80,45 @@
                     'share':'分享'
                 }
                 return tab[this.$route.params.tab]||'全部'
-            },
-            loginname(){
-                if(user.getUserInfo()){
-                    return user.getUserInfo().loginname
-                }
-            },
-            accesstoken(){
-               if(user.getUserInfo()){
-                    return user.getUserInfo().accesstoken || ''
-                }            
             }
         },
         methods:{
             loginOut(){
                 user.clearUserInfo();
                 this.loginname = '';
-                this.$router.go(0)
+                this.accesstoken = '';
+                this.$router.push({
+                    path :'/login'
+                })
             },
-            getMessage(){
-                if(this.accesstoken){
-                    api.getUnreadMessages({
-                        accesstoken:this.accesstoken
-                    })
-                    .then((res)=>{
-                        let result = res['data'];
-                        if(result.success){
-                            this.messageCount = result.data
-                        }
-                    })
-                    .catch((err)=>{
-                        console.log(err);
-                    })
-                }
-            },
+            fetch(){
+               if(user.getUserInfo()){
+                    this.accesstoken = user.getUserInfo().accesstoken || ''
+                    this.loginname = user.getUserInfo().loginname || ''
+                    if(this.accesstoken){
+                        api.getUnreadMessages({
+                            accesstoken:this.accesstoken
+                        })
+                        .then((res)=>{
+                            let result = res['data'];
+                            if(result.success){
+                                this.messageCount = result.data
+                            }
+                        })
+                        .catch((err)=>{
+                            console.log(err);
+                        })
+                    }
+                }  
+            }
         },
         watch:{
             $route(){
-                this.getMessage();
-                if(user.getUserInfo()){
-                    this.loginname = user.getUserInfo().loginname
-                }
+                this.fetch();
             }
         },
         created(){
-            this.getMessage();
+            this.fetch();
         }
     }
 </script>

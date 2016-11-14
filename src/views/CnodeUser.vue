@@ -11,10 +11,22 @@
 
 
 <script>
+import user from '../store/user.js'
     export default{
         data(){
             return{
                 
+            }
+        },
+        watch:{
+            $router(){
+                if(user.getUserInfo()){
+
+                }else{
+                    this.$router.push({
+                        path : '/login'
+                    })
+                }
             }
         }
     }

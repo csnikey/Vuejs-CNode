@@ -79,6 +79,7 @@
 <script>
     import api from '../store/api.js'
     import filters from '../filters'
+
     export default{
         data(){
             return {
@@ -114,30 +115,35 @@
             }
         },
         methods:{
-            fetch(){
+            fetch(page){
                 api.getTopics({
                     tab:this.$route.params.tab,
-                    page:this.page,
+                    page:page,
                     limit:this.limit,
                     mdrender:this.mdrender
                 })
                 .then((res)=>{
                     this.listData=res.data.data;
                     this.isSuccess=res.data.success;
+                    this.errorMsg = '';
                 })
                 .catch((err)=>{
-                    
+                    this.isSuccess = false;
+                    this.errorMsg = '获取列表失败,刷新重新获取'
                 })
             }
         },
         watch:{
             $route(){
                 this.isSuccess = false;
-                this.fetch();
+                this.errorMsg = '加载中...'
+                this.fetch(this.page);
             }
         },
         created(){
-            this.fetch()
+            this.isSuccess = false;
+            this.errorMsg = '加载中...'
+            this.fetch(this.page)
         }
     }
 </script>
