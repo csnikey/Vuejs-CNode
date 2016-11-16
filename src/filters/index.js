@@ -1,3 +1,5 @@
+import  showdown from 'showdown'
+const convert= new showdown.Converter()
 function tab(val,isTop,isGood){
     if(isTop) return '置顶'
     if(isGood) return '精华'
@@ -35,7 +37,11 @@ function timeAgo(val){
         return Math.floor(diffSeconds/years)+'年前'
     }
 }
+function mdToHtml(val) {
+    return convert.makeHtml(val)
+}
 export default {
     tab,
-    timeAgo
+    timeAgo,
+    mdToHtml
 }

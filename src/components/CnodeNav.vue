@@ -107,9 +107,13 @@
                         })
                         .catch((err)=>{
                             console.log(err);
+                            this.fetch()
                         })
                     }
-                }  
+                } else{
+                    this.loginname = '';
+                    this.accesstoken = '';
+                } 
             }
         },
         watch:{

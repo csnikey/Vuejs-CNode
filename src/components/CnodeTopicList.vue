@@ -129,7 +129,7 @@
                 })
                 .catch((err)=>{
                     this.isSuccess = false;
-                    this.errorMsg = '获取列表失败,刷新重新获取'
+                    this.fetch(this.page)
                 })
             }
         },
