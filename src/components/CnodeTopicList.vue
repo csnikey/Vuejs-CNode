@@ -79,7 +79,6 @@
 <script>
     import api from '../store/api.js'
     import filters from '../filters'
-
     export default{
         data(){
             return {

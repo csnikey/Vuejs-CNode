@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import axios from 'axios'
 
 const baseUrl = 'https://cnodejs.org/api/v1'
