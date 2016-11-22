@@ -4,11 +4,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        count:0
+        loginname:''
     },
     mutations:{
-        add(state){
-            state.count++
-        }
+        
+    },
+    getters:{
+
+    },
+    actions:{
+
     }
 })

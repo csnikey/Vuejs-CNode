@@ -7,43 +7,47 @@
 </template>
 
 
-<style lang="stylus" scoped>
-.loginWrapper
-    width 98%
-    margin 100px auto 10px
-    background #fff
-    p
-        width 98%
-        margin 20px auto
-        text-align center
-    input 
-        display block
-        width 80%;
-        margin 20px auto
-        outline none
-        height 30px 
-        line-height 30px
-        text-indent 10px
-        border-radius 4px
-        background-color: #fff;
-        border: 1px solid #ccc;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        -webkit-transition: border linear .2s,box-shadow linear .2s;
-        -moz-transition: border linear .2s,box-shadow linear .2s;
-        -o-transition: border linear .2s,box-shadow linear .2s;
-        transition: border linear .2s,box-shadow linear .2s
-    a 
-        display block
-        background #08c
-        width 30%
-        color #fff
-        line-height 40px
-        height 40px
-        text-align center
-        margin 10px auto
-        border-radius 4px
+<style lang="sass" scoped>
+.loginWrapper {
+  width: 98%;
+  margin: 100px auto 10px;
+  background: #fff;
+  p {
+    width: 98%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  input {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    outline: none;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+  }
+  a {
+    display: block;
+    background: #08c;
+    width: 30%;
+    color: #fff;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 4px;
+  }
+}
 </style>
 
 <script>

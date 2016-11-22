@@ -30,8 +30,8 @@ module.exports = {
         }
       },
       {
-        test: /\.styl$/,
-        loader:'style!css!stylus'
+        test: /\.scss$/,
+        loader:'style!css!sass'
       }
     ]
   },

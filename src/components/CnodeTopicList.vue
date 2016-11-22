@@ -26,54 +26,66 @@
 </template>
 
 
-<style lang="stylus" scoped>
-   .list 
-        a
-            display flex 
-            border-bottom 1px solid #f0f0f0
-            &:visited
-                color #888
-            .avatar 
-                flex 1
-                display flex
-                align-items center
-                justify-content center
-                img 
-                    width 50%
-            .main
-                flex 4
-                color #333
-                li 
-                    line-height 20px
-                    margin 8px 0
-                .good
-                    padding 4px 
-                    border-radius 4px 
-                    background #80bd01
-                    color #fff
-                    text-align center
-                    font-weight bold
-                .tab
-                    padding 4px 
-                    border-radius 4px 
-                    text-align center
-                    background #e5e5e5
-                    color #999
-                    font-weight bold
-            .tips
-                flex 1
-                display flex
-                justify-content center
-                align-items center
-                color #333
-                .reply-tips
-                    color #9e78c0
-                .visit-tips
-                    color #b4b4b4
-    .error
-        width 100%
-        line-height 100px
-        text-align center
+<style lang="sass" scoped>
+.list a {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  &:visited {
+    color: #888;
+  }
+  .avatar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 50%;
+    }
+  }
+  .main {
+    flex: 4;
+    color: #333;
+    li {
+      line-height: 20px;
+      margin: 8px 0;
+    }
+    .good {
+      padding: 4px;
+      border-radius: 4px;
+      background: #80bd01;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+    }
+    .tab {
+      padding: 4px;
+      border-radius: 4px;
+      text-align: center;
+      background: #e5e5e5;
+      color: #999;
+      font-weight: bold;
+    }
+  }
+  .tips {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    .reply-tips {
+      color: #9e78c0;
+    }
+    .visit-tips {
+      color: #b4b4b4;
+    }
+  }
+}
+
+.error {
+  width: 100%;
+  line-height: 100px;
+  text-align: center;
+}
 </style>
 
 <script>

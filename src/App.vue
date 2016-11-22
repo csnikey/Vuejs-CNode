@@ -22,6 +22,6 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-@import './assets/common.styl'
+<style lang="sass">
+@import './assets/common.scss'
 </style>

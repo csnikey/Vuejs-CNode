@@ -24,38 +24,43 @@
     </ul>
 </template>
 
-<style lang="stylus" scoped>
-    .nav 
-        display flex
-        background #f6f6f6
-        width 100%
-        border-bottom 1px solid #f0f0f0
-        &>li 
-            flex 1
-            text-align center
-            height 40px 
-            line-height 40px
-            color #80bd01
-            position relative
-            ul
-                border-top 1px solid #f0f0f0
-                li
-                    color #80bd01
-                    background #f6f6f6
-                    border-bottom 1px solid #f0f0f0
-            .message
-                display block
-                width 20px
-                height 20px 
-                background #80bd01
-                color #fff
-                text-align center
-                border-radius 100%;
-                line-height 20px
-                position absolute
-                right 10px
-                top 10px
-                font-size 12px
+<style lang="sass" scoped>
+.nav {
+  display: flex;
+  background: #f6f6f6;
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+  > li {
+    flex: 1;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    color: #80bd01;
+    position: relative;
+    ul {
+      border-top: 1px solid #f0f0f0;
+      li {
+        color: #80bd01;
+        background: #f6f6f6;
+        border-bottom: 1px solid #f0f0f0;
+      }
+    }
+    .message {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: #80bd01;
+      color: #fff;
+      text-align: center;
+      border-radius: 100%;
+      line-height: 20px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 12px;
+    }
+  }
+}
 </style>
 
 <script>
