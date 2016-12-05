@@ -18,6 +18,7 @@
             <span><span class="reply-tips">{{list.reply_count}}</span>/<span class="visit-tips">{{list.visit_count}}</span></span>
             </div>
         </router-link>
+        <img src="../assets/toTop.svg" @click="toTop" v-show="displayTop" class="toTop">
     </div>
     <div class="error" v-else>
         {{errorMsg}}
@@ -97,6 +98,16 @@
         display: block;
     }
 }
+.toTop{
+    width:25px;
+    height: 25px;
+    border-radius: 100%;
+    position: fixed;
+    right: 20px;
+    border:none;
+    top:80%;
+    display: block;
+}
 </style>
 
 <script>
@@ -111,7 +122,8 @@
                 page:1,
                 limit:15,
                 mdrender:true,
-                progress:false
+                progress:false,
+                displayTop:false
             }
         },
         filters:{
@@ -150,6 +162,9 @@
                     this.isSuccess=res.data.success;
                     this.errorMsg = '';
                     this.progress=false;
+                    if(this.page>=3){
+                        this.displayTop=true;
+                    }
                 })
                 .catch((err)=>{
                     this.isSuccess = false;
@@ -163,8 +178,16 @@
                 let clientHeight = document.documentElement.clientHeight||document.body.clientHeight;
                 if(scrollTop+clientHeight==scrollHeight){
                     this.progress=true;
-                    this.fetch(++this.page)
+                    this.fetch(++this.page);
                 }
+            },
+            toTop(){
+              if(document.documentElement && document.documentElement.scrollTop){
+                  document.documentElement.scrollTop=0;
+              }else{
+                  document.body.scrollTop=0;
+              }
+              this.displayTop=false;
             }
         },
         watch:{
