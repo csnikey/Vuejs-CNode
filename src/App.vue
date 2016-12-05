@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import CnodeHeader from './components/CnodeHeader.vue'
+import CnodeHeader from './components/CnodeHeader'
 import CnodeNav from './components/CnodeNav.vue'
 export default {
   data(){
     return {
-      
+
     }
   },
   components:{

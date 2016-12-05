@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+let path = require('path')
+let webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
@@ -31,18 +31,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader:'style!css!sass'
+        loader:'css!sass'
       }
     ]
   },
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue'
-    }
+    },
+    extensions:['.js','.vue']
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    inline: true
   },
   devtool: '#eval-source-map'
 }

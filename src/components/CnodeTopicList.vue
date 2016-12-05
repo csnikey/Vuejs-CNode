@@ -1,9 +1,9 @@
 <template>
 <div>
-    <div class="list" v-if="isSuccess">
+    <div class="list" v-if="isSuccess" v-on:touchmove="getList">
         <router-link :to="'/topic/'+list.id"  v-for="list in lists">
             <div class="avatar">
-                <img v-bind:src="list.author.avatar_url">
+                <img :src="list.author.avatar_url">
             </div>
             <ul class="main">
                 <li>
@@ -18,6 +18,9 @@
             <span><span class="reply-tips">{{list.reply_count}}</span>/<span class="visit-tips">{{list.visit_count}}</span></span>
             </div>
         </router-link>
+    </div>
+    <div class="progress" v-if="progress">
+        <img src="../assets/progress.gif">
     </div>
     <div class="error" v-else>
         {{errorMsg}}
@@ -86,6 +89,14 @@
   line-height: 100px;
   text-align: center;
 }
+.progress{
+    width: 100%;
+    img{
+        width: 40px;
+        margin:10px auto;
+        display: block;
+    }
+}
 </style>
 
 <script>
@@ -99,7 +110,8 @@
                 errorMsg:'加载中...',
                 page:1,
                 limit:10,
-                mdrender:true
+                mdrender:true,
+                progress:false
             }
         },
         filters:{
@@ -134,14 +146,24 @@
                     mdrender:this.mdrender
                 })
                 .then((res)=>{
-                    this.listData=res.data.data;
+                    this.listData=this.listData.concat(res.data.data);
                     this.isSuccess=res.data.success;
                     this.errorMsg = '';
+                    this.progress=false;
                 })
                 .catch((err)=>{
                     this.isSuccess = false;
                     this.fetch(this.page)
                 })
+            },
+            getList(){
+                let scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+                let scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+                let clientHeight = document.documentElement.clientHeight||document.body.clientHeight;
+                if(scrollTop+clientHeight==scrollHeight){
+                    this.progress=true;
+                    this.fetch(++this.page)
+                }
             }
         },
         watch:{

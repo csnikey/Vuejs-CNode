@@ -12,7 +12,7 @@ import CnodeLogin from '../views/CnodeLogin.vue'
 
 export default new VueRouter({
   routes: [
-      {
+      {   
           path: '/',redirect: '/topics/all'
       },
       {

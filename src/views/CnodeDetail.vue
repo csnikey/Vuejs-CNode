@@ -19,7 +19,7 @@
             <div class="reply-lists" v-for="(reply,index) in detail.replies" v-if="detail.reply_count">
                 <div class="reply-list">
                     <ul>
-                        <li><img v-bind:src="reply.author.avatar_url"></li>
+                        <li><img :src="reply.author.avatar_url"></li>
                         <li>{{reply.author.loginname}} <span class="time">{{index+1}}楼 {{reply.create_at | timeAgo}}</span></li>
                         <li><img src="../assets/like.svg" class="like"><span v-if="reply.ups.length">{{reply.ups.length}}</span>顶</li>
                     </ul>
