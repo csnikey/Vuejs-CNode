@@ -19,11 +19,11 @@
             </div>
         </router-link>
     </div>
-    <div class="progress" v-if="progress">
-        <img src="../assets/progress.gif">
-    </div>
     <div class="error" v-else>
         {{errorMsg}}
+    </div>
+    <div class="progress" v-if="progress">
+        <img src="../assets/progress.gif">
     </div>
 </div>
 </template>
@@ -109,7 +109,7 @@
                 isSuccess:false,
                 errorMsg:'加载中...',
                 page:1,
-                limit:10,
+                limit:15,
                 mdrender:true,
                 progress:false
             }
