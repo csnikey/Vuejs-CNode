@@ -8,7 +8,6 @@ function getUserInfo(){
         return null;
     }
 }
-
 function setUserInfo(accesstoken){
     user.accesstoken = accesstoken;
     if('localStorage' in window){
