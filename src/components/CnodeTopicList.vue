@@ -7,9 +7,9 @@
             </div>
             <ul class="main">
                 <li>
-                <span v-if="list.good||list.top" class="good">{{list.tab | tab(list.top,list.good)}}</span>
-                <span v-else class="tab">{{list.tab | tab(list.top,list.good)}}</span>
-                <span class="loginname">{{list.author.loginname}}</span>
+                    <span v-if="list.good||list.top" class="good">{{list.tab | tab(list.top,list.good)}}</span>
+                    <span v-else class="tab">{{list.tab | tab(list.top,list.good)}}</span>
+                    <span class="loginname">{{list.author.loginname}}</span>
                 </li>
                 <li>{{list.title}}</li>
                 <li>{{list.last_reply_at | timeAgo}}</li>
