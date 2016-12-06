@@ -23,7 +23,7 @@
                         <li>{{reply.author.loginname}} <span class="time">{{index+1}}楼 {{reply.create_at | timeAgo}}</span></li>
                         <li><img src="../assets/like.svg" class="like"><span v-if="reply.ups.length">{{reply.ups.length}}</span>顶</li>
                     </ul>
-                    <div v-html="reply.content"></div>
+                    <div v-html="repliesContent[index]"></div>
                 </div>
             </div>
         </div>
@@ -112,8 +112,12 @@
 .reply-lists {
   width: 100%;
   padding: 10px;
+    overflow:auto;
   .reply-list {
     border-top: 1px solid #eee;
+    div p a{
+        color:#08c;
+    }
   }
   ul {
     display: flex;
@@ -165,6 +169,15 @@ export default {
     computed:{
         contenthtml(){
             return filters.mdToHtml(this.detail.content)
+        },
+        repliesContent(){
+            let replies = [];
+            if(this.detail){
+                this.detail.replies.forEach((item)=>{
+                    replies.push(filters.mdToHtml(item.content));
+                })
+            }
+            return replies;
         }
     },
     filters:{

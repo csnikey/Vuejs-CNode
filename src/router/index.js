@@ -11,6 +11,7 @@ import CnodeMessages from '../views/CnodeMessages.vue'
 import CnodeLogin from '../views/CnodeLogin.vue'
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
       {   
           path: '/',redirect: '/topics/all'
