@@ -28,10 +28,6 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      },
-      {
-        test: /\.scss$/,
-        loader:'css!sass'
       }
     ]
   },
