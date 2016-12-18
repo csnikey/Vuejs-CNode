@@ -28,6 +28,10 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.styl/,
+        loader:['css-loader','style-loader']
       }
     ]
   },

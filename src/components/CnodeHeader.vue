@@ -34,11 +34,11 @@
                 line-height: 30px
                 text-indent: 10px
                 border-radius: 4px
-                &:before
-                    content: ''
-                    display: block
-                    background: url("../assets/search.png") no-repeat
-                    background-position: center
+            &:after
+                content: ''
+                display: block
+                background: url("../assets/search.png") no-repeat
+                background-position: center
         .send
             flex: 2
             a
@@ -50,12 +50,18 @@
                 line-height: 30px
                 color: #fff
                 border-radius: 4px
+
 </style>
 
 <script>
     export default{
         data(){
             return {
+                input:''
+            }
+        },
+        methods:{
+            search(){
 
             }
         }

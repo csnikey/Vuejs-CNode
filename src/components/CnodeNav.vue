@@ -10,7 +10,7 @@
                 <router-link tag="li" to="/topics/job">招聘</router-link>
             </ul>
         </li>
-
+        
         <router-link tag="li" :to="'/message/'+accesstoken" v-if="accesstoken">消息<span class="message" v-if="messageCount">{{messageCount}}</span></router-link>
         <router-link tag="li" to="/login" v-else>消息</router-link>
         
@@ -36,7 +36,7 @@
             height: 40px
             line-height: 40px
             color: #80bd01
-            position: relative
+            position: relative;
             ul
                 border-top: 1px solid #f0f0f0
                 li
@@ -93,8 +93,8 @@
             },
             fetch(){
                if(user.getUserInfo()){
-                    this.accesstoken = user.getUserInfo().accesstoken || ''
-                    this.loginname = user.getUserInfo().loginname || ''
+                    this.accesstoken = user.getUserInfo().accesstoken || '';
+                    this.loginname = user.getUserInfo().loginname || '';
                     if(this.accesstoken){
                         api.getUnreadMessages({
                             accesstoken:this.accesstoken
