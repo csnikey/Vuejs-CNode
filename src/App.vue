@@ -8,7 +8,7 @@
 
 <script>
 import CnodeHeader from './components/CnodeHeader'
-import CnodeNav from './components/CnodeNav.vue'
+import CnodeNav from './components/CnodeNav'
 export default {
   data(){
     return {
