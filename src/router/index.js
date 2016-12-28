@@ -9,7 +9,7 @@ import Cnode404 from '../views/Cnode404'
 import CnodeUser from '../views/CnodeUser'
 import CnodeMessages from '../views/CnodeMessages'
 import CnodeLogin from '../views/CnodeLogin'
-
+import CnodeSend from '../views/CnodeSend'
 export default new VueRouter({
   mode: 'history',
   routes: [
@@ -30,6 +30,9 @@ export default new VueRouter({
       },
       {
           path: '/message/:accesstoken',component:CnodeMessages
+      },
+      {
+          path:'/send',component:CnodeSend
       },
       {
           path: '*',component:Cnode404

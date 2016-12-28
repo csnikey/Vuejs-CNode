@@ -1,8 +1,8 @@
 <template>
     <ul class="header">
-        <li class="logo"><img src="../assets/logo.svg" alt="cnode"></li>
-        <li class="search"><input type="text"></li>
-        <li class="send"><a href="javascript:;">发布</a></li>
+        <router-link tag="li" to="/" class="logo"><img src="../assets/logo.svg" alt="cnode"></router-link>
+        <li class="search"><input type="text" @keyup.enter="search" v-model="input"></li>
+        <li class="send"><router-link to="/send">发布</router-link></li>
     </ul>
 </template>
 
@@ -62,7 +62,7 @@
         },
         methods:{
             search(){
-
+                location.href=`https://www.google.com.hk/search?hl=zh-CN&q=site:cnodejs.org+${this.input}`
             }
         }
     }
