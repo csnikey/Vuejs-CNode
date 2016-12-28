@@ -11,7 +11,9 @@
             </ul>
         </li>
         
-        <router-link tag="li" :to="'/message/'+accesstoken" v-if="accesstoken">消息<span class="message" v-if="messageCount">{{messageCount}}</span></router-link>
+        <router-link tag="li" :to="'/message/'+accesstoken" v-if="accesstoken">
+            消息<span class="message" v-if="messageCount">{{messageCount}}</span>
+        </router-link>
         <router-link tag="li" to="/login" v-else>消息</router-link>
         
         <li @click="aboutMeDisplay=!aboutMeDisplay" v-if="loginname">我<i class="triangle"></i>
@@ -64,7 +66,6 @@
     export default{
         data(){
             return {
-                messageCount:0,
                 tabListDisplay:false,
                 aboutMeDisplay:false
             }
