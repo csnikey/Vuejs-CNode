@@ -17,7 +17,6 @@ ul
 
 
 <script>
-import user from '../store/user.js'
     export default{
         data(){
             return{
@@ -26,13 +25,9 @@ import user from '../store/user.js'
         },
         watch:{
             $router(){
-                if(user.getUserInfo()){
-
-                }else{
-                    this.$router.push({
-                        path : '/login'
-                    })
-                }
+                this.$router.push({
+                    path : '/login'
+                })
             }
         }
     }

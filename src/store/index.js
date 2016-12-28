@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import api from './api.js'
-import user from './user.js'
 
 export default new Vuex.Store({
     state:{
@@ -32,7 +31,8 @@ export default new Vuex.Store({
                 'ask':'问答',
                 'good':'精华',
                 'job':'招聘',
-                'share':'分享'
+                'share':'分享',
+                'all':'全部'
             }
             if(payload.tab in tab){
                 state.tab = tab[payload.tab]

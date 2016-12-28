@@ -62,7 +62,6 @@
 
 <script>
     import api from '../store/api.js'
-    import user from '../store/user.js'
     export default{
         data(){
             return {
