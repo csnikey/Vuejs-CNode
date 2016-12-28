@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="list" v-if="isSuccess" v-on:touchmove="getList">
-        <router-link :to="'/topic/'+list.id"  v-for="list in lists">
+        <router-link :to="'/topic/'+list.id"  v-for="list in lists" :key="list.id">
             <div class="avatar">
                 <img :src="list.author.avatar_url">
             </div>

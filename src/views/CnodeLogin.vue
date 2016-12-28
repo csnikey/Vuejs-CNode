@@ -64,7 +64,10 @@
                 })
                 .then((res)=>{
                     if(res.data.success){
-                        user.setUserInfo(this.accesstoken);
+                        this.$store.commit('loginIn',{
+                            accesstoken:this.accesstoken,
+                            loginname:res.data.loginname
+                        })
                         this.$router.push({
                             path:'/topics/all'
                         });
@@ -75,8 +78,7 @@
                 })
                 .catch((err)=>{
                     console.log(err);
-                })
-                
+                })   
             }
         }     
     }

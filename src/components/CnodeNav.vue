@@ -66,63 +66,53 @@
             return {
                 messageCount:0,
                 tabListDisplay:false,
-                aboutMeDisplay:false,
-                loginname :'',
-                accesstoken :''
+                aboutMeDisplay:false
             }
         },
         computed:{
+            loginname(){
+                return this.$store.state.loginname
+            },
+            accesstoken(){
+                return this.$store.state.accesstoken
+            },
             currentTab(){
-                let tab = {
-                    'ask':'问答',
-                    'good':'精华',
-                    'job':'招聘',
-                    'share':'分享'
-                }
-                return tab[this.$route.params.tab]||'全部'
+                return this.$store.state.tab
+            },
+            messageCount(){
+                return this.$store.state.messageCount
             }
         },
         methods:{
             loginOut(){
-                user.clearUserInfo();
-                this.loginname = '';
-                this.accesstoken = '';
+                this.$store.commit('loginOut',{})
                 this.$router.push({
                     path :'/login'
                 })
             },
-            fetch(){
-               if(user.getUserInfo()){
-                    this.accesstoken = user.getUserInfo().accesstoken || '';
-                    this.loginname = user.getUserInfo().loginname || '';
-                    if(this.accesstoken){
-                        api.getUnreadMessages({
-                            accesstoken:this.accesstoken
-                        })
-                        .then((res)=>{
-                            let result = res['data'];
-                            if(result.success){
-                                this.messageCount = result.data
-                            }
-                        })
-                        .catch((err)=>{
-                            console.log(err);
-                            this.fetch()
-                        })
-                    }
-                } else{
-                    this.loginname = '';
-                    this.accesstoken = '';
-                } 
+            getUserInfo(){
+                let cnodeUser = JSON.parse(localStorage.getItem('cnodeUser'));
+                if(cnodeUser){
+                    this.$store.dispatch('getUnreadMessages',{
+                        accesstoken:cnodeUser.accesstoken
+                    });
+                    this.$store.commit('loginIn',{
+                        accesstoken:cnodeUser.accesstoken,
+                        loginname:cnodeUser.loginname
+                    })
+                }
+                this.$store.commit('currentTab',{
+                    tab:this.$route.params.tab
+                })
             }
         },
         watch:{
             $route(){
-                this.fetch();
+                this.getUserInfo();
             }
         },
         created(){
-            this.fetch();
+            this.getUserInfo();
         }
     }
 </script>
