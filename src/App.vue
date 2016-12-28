@@ -1,14 +1,12 @@
 <template>
   <div id="app">
       <cnode-header></cnode-header>
-      <cnode-nav></cnode-nav>
       <router-view></router-view>
   </div>
 </template>
 
 <script>
 import CnodeHeader from './components/CnodeHeader'
-import CnodeNav from './components/CnodeNav'
 export default {
   data(){
     return {
@@ -16,8 +14,7 @@ export default {
     }
   },
   components:{
-    CnodeHeader,
-    CnodeNav
+    CnodeHeader
   }
 }
 </script>

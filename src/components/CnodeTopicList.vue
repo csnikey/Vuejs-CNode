@@ -1,5 +1,6 @@
 <template>
 <div>
+    <cnode-nav></cnode-nav>
     <div class="list" v-if="isSuccess" v-on:touchmove="getList">
         <router-link :to="'/topic/'+list.id"  v-for="list in lists" :key="list.id">
             <div class="avatar">
@@ -97,6 +98,7 @@
 <script>
     import api from '../store/api.js'
     import filters from '../filters'
+    import CnodeNav from './CnodeNav'
     export default{
         data(){
             return {
@@ -173,6 +175,9 @@
               }
               this.displayTop=false;
             }
+        },
+        components:{
+            CnodeNav
         },
         watch:{
             $route(){
