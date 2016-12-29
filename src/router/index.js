@@ -10,6 +10,8 @@ import CnodeUser from '../views/CnodeUser'
 import CnodeMessages from '../views/CnodeMessages'
 import CnodeLogin from '../views/CnodeLogin'
 import CnodeSend from '../views/CnodeSend'
+
+
 export default new VueRouter({
   mode: 'history',
   routes: [

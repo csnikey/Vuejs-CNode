@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="msg" v-else>
-            {{loadingMsg}}
+            <img src="../assets/progress.gif">
         </div>
     </div>
 </template>
@@ -38,6 +38,9 @@
         width: 100%
         margin: 30px auto
         text-align: center
+        img
+            width:40px
+            margin:40px auto
     .title
         line-height: 30px
         padding: 10px
@@ -134,8 +137,7 @@ export default {
     data(){
         return {
             detail:null,
-            isLoading:false,
-            loadingMsg:'加载中..'
+            isLoading:false
         }
     },
     computed:{
@@ -172,7 +174,6 @@ export default {
             .then((res)=>{
                 let result = res.data;
                 this.isLoading = true;
-                this.loadingMsg = '';
                 if(result.success){
                     this.detail=result.data;
                 }

@@ -22,7 +22,7 @@
         <img src="../assets/toTop.svg" @click="toTop" v-show="displayTop" class="toTop">
     </div>
     <div class="error" v-else>
-        {{errorMsg}}
+        <img src="../assets/progress.gif">
     </div>
     <div class="progress" v-if="progress">
         <img src="../assets/progress.gif">
@@ -78,6 +78,9 @@
         width: 100%
         line-height: 100px
         text-align: center
+        img
+            width:40px
+            margin:40px auto
     .progress
         width: 100%
         img
@@ -102,9 +105,8 @@
     export default{
         data(){
             return {
-                listData:[],
+                lists:[],
                 isSuccess:false,
-                errorMsg:'加载中...',
                 page:1,
                 limit:15,
                 mdrender:true,
@@ -121,19 +123,6 @@
             }
         },
         computed:{
-            lists(){
-                let data=this.listData;
-                let topList = [];
-                let noTopList = [];
-                data.forEach((item,index)=>{
-                    if(item.top){
-                        topList.push(item)
-                    }else{
-                        noTopList.push(item)
-                    }
-                })
-                return topList.concat(noTopList)
-            }
         },
         methods:{
             fetch(page){
@@ -144,9 +133,22 @@
                     mdrender:this.mdrender
                 })
                 .then((res)=>{
-                    this.listData=this.listData.concat(res.data.data);
+                    if(page == 1){
+                        this.lists = res.data.data;
+                        let topList = [];
+                        let noTopList = [];
+                        this.lists.forEach((item,index)=>{
+                            if(item.top){
+                                topList.push(item)
+                            }else{
+                                noTopList.push(item)
+                            }
+                        })
+                        this.lists = topList.concat(noTopList)
+                    }else{
+                        this.lists = this.lists.concat(res.data.data);
+                    }
                     this.isSuccess=res.data.success;
-                    this.errorMsg = '';
                     this.progress=false;
                     if(this.page>=3){
                         this.displayTop=true;
@@ -181,14 +183,15 @@
         },
         watch:{
             $route(){
+                console.log('route');
+                this.page = 1;
                 this.isSuccess = false;
-                this.errorMsg = '加载中...'
                 this.fetch(this.page);
             }
         },
         created(){
+            console.log('created');
             this.isSuccess = false;
-            this.errorMsg = '加载中...'
             this.fetch(this.page)
         }
     }

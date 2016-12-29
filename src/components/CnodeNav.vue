@@ -47,16 +47,16 @@
                     border-bottom: 1px solid #f0f0f0
             .message
                 display: block
-                width: 20px
-                height: 20px
+                width: 18px
+                height: 18px
                 background: #80bd01
                 color: #fff
                 text-align: center
                 border-radius: 100%
-                line-height: 20px
+                line-height: 18px
                 position: absolute
-                right: 10px
-                top: 10px
+                right: 20px
+                top: 12px
                 font-size: 12px
 </style>
 
