@@ -179,14 +179,12 @@
         },
         watch:{
             $route(){
-                console.log('route');
                 this.page = 1;
                 this.isSuccess = false;
                 this.fetch(this.page);
             }
         },
         created(){
-            console.log('created');
             this.isSuccess = false;
             this.fetch(this.page)
         }
