@@ -28,13 +28,33 @@
     top: 50%;
     margin-left: -40px;
     margin-top: -40px;
+    /*for dev*/
     background: url('./src/assets/progress.gif') center center;
     background-size: contain;
   }
   </style>
   </head>
   <body>
+    <!--实际开发
     <div id="app"><img src="/dist/progress.gif" class="loading"></div>
     <script src="/dist/build.js"></script>
+    -->
+    <!--为了在github上展示-->
+    <div id="app"></div>
+    <script>
+    //处理github路径问题
+    window.addEventListener('load',function(){
+        var app = document.querySelector('#app');
+        var body = document.querySelector('body');
+        var img = document.createElement('img');
+        var script = document.createElement('script');
+        var isGithub = location.href.indexOf('github')!=-1;
+            img.src = isGithub?'Vuejs-CNode/dist/progress.gif':'/dist/progress.gif';
+            img.className = 'loading';
+            app.appendChild(img);
+            script.src = isGithub?'Vuejs-CNode/dist/build.js':'/dist/build.js';
+            body.appendChild(script);
+    })
+    </script>
   </body>
 </html>

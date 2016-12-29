@@ -1,6 +1,6 @@
 <template>
 <div>
-<h1>个人主页</h1>
+<h1>个人主页开发ing</h1>
 </div>
 </template>
 

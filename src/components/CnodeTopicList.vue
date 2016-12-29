@@ -154,10 +154,6 @@
                         this.displayTop=true;
                     }
                 })
-                .catch((err)=>{
-                    this.isSuccess = false;
-                    this.fetch(this.page)
-                })
             },
             getList(){
                 if(this.progress) return;

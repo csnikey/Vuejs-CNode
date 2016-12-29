@@ -178,10 +178,6 @@ export default {
                     this.detail=result.data;
                 }
             })
-            .catch((err)=>{
-                this.isLoading = false;
-                this.fetch()
-            })
         }
     },
     watch:{

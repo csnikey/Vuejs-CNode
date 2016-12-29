@@ -1,6 +1,6 @@
 <template>
 	<div>
-		发布
+		发布开发ing
 	</div>
 </template>
 

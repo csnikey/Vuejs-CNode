@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>消息</h1>
+    <h1>消息开发ing</h1>
 </div>
 </template>
 
