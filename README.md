@@ -1,5 +1,5 @@
-A Vuejs project by using the API of [CNode](https://cnodejs.org/) that is a community about Node.js
-#### (Vue2+Vue-router2+Vuex2），progress：1/3
+A Vuejs project(Vue2+Vue-router2+Vuex2）by using the API of [CNode](https://cnodejs.org/) that is a community about Node.js
+
 ## Build Setup
 
 ``` bash
