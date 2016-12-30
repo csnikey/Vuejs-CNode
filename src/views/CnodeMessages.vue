@@ -1,11 +1,14 @@
 <template>
 <div>
-<ul  class="messageList">
-    <li :class="message.has_read?has-read :''" v-for="message in messages">
+<ul  class="messageList" v-if="loading">
+    <li :class="message.has_read?'':'has-read'" v-for="message in messages">
         <router-link :to="'/user/'+message.author.loginname">{{message.author.loginname}}</router-link>在
         <router-link :to="'/topic/'+message.topic.id">{{message.topic.title}}</router-link>中@了你
     </li>
 </ul>
+<div class="load" v-else>
+    <img src="../assets/progress.gif">
+</div>
 </div>
 </template>
 
@@ -16,12 +19,19 @@
     li
         box-sizing border-box
         line-height 20px
-        padding 4px 10px
-        border-bottom 1px solid #eee
+        padding 8px 10px
+        border-bottom 1px solid #ddd
         a
             color #08c
     .has-read
         background #eff6fa
+.load
+    width: 100%
+    line-height: 100px
+    text-align: center
+    img
+        width:40px
+        margin:40px auto
 </style>
 
 <script>
@@ -30,7 +40,8 @@ import api from '../store/api.js'
         data(){
             return{
                 mdrender:false,
-                messages:[]
+                messages:[],
+                loading:false
             }
         },
         computed:{
@@ -46,6 +57,7 @@ import api from '../store/api.js'
                         accesstoken:this.accesstoken
                     })
                     .then((res)=>{
+                        this.loading = true;
                         let result = res.data.data;
                         let messages = result.has_read_messages;
                         let unmessages = result.hasnot_read_messages;
