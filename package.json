@@ -26,7 +26,7 @@
     "vue-router": "^2.1.1",
     "vue-template-compiler": "^2.1.8",
     "vuex": "^2.1.1",
-    "webpack": "^2.2.0-rc.1",
+    "webpack": "^2.2.0-rc.3",
     "webpack-dev-server": "^2.2.0-rc.0"
   },
   "repository": {
