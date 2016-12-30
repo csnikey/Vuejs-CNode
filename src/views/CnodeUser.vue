@@ -48,6 +48,9 @@ ul
             display flex
             justify-content center
             align-items center
+            img
+                display block
+                max-width 50%
         p
             font-size 14px
             margin-bottom 20px
