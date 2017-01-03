@@ -9,6 +9,7 @@
                <p>{{user.loginname}}</p>
                <p>注册时间{{user.create_at | timeAgo}}</p>
                <p>{{user.score}} 积分</p>
+               <router-link class="collection" :to="'/collection/'+user.loginname">我的收藏>></router-link>
            </div>
        </div>
        <div class="recent_topic">
@@ -50,8 +51,20 @@
 .userinfo
     width 100%
     display flex
+    .collection
+        width 80px
+        height 30px
+        line-height 30px
+        text-align center
+        position absolute
+        right 10px
+        bottom 10px
+        color #000
+        border-radius 4px
+        text-decoration underline
     div
         flex 3
+        position relative
         &:first-child
             flex 1
             text-align center
@@ -134,7 +147,6 @@
                     }else{
                         this.fetch();
                     }
-                    console.log(result)
                 })
             }
         },

@@ -10,6 +10,7 @@ import CnodeUser from '../views/CnodeUser'
 import CnodeMessages from '../views/CnodeMessages'
 import CnodeLogin from '../views/CnodeLogin'
 import CnodeSend from '../views/CnodeSend'
+import CnodeCollection from '../views/CnodeCollection'
 
 
 export default new VueRouter({
@@ -35,6 +36,9 @@ export default new VueRouter({
       },
       {
           path:'/send',component:CnodeSend
+      },
+      {
+          path:'/collection/:loginname',component:CnodeCollection
       },
       {
           path: '*',component:Cnode404
