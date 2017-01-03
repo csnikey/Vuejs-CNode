@@ -72,7 +72,7 @@
     h1
         width 100%
         text-indent 20px
-        line-height 50px
+        line-height 40px
         background #eee
     div
         width 100%
