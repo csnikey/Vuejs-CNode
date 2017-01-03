@@ -14,7 +14,10 @@
                 <span>{{detail.visit_count}}次浏览</span>
             </div>
             <div v-html="contenthtml"  class="content"></div>
-            <div class="collect"><span>收藏</span></div>
+            <template v-if="this.accesstoken">
+                <div class="collect decollect" @click="decollect" v-if="is_collect"><span>取消收藏</span></div>
+                <div class="collect" @click="collect" v-else><span>收藏</span></div>
+            </template>
             <div class="reply-num"><span>{{detail.reply_count}}</span>个回复</div>
             <div class="reply-lists" v-for="(reply,index) in detail.replies" v-if="detail.reply_count">
                 <div class="reply-list">
@@ -87,6 +90,10 @@
             text-align: center
             font-weight: bold
             margin-right: 10px
+    .decollect
+        span
+            background #eee
+            color #333
     .reply-num
         width: 100%
         padding: 0 10px
@@ -152,6 +159,12 @@ export default {
                 })
             }
             return replies;
+        },
+        accesstoken(){
+            return this.$store.state.accesstoken
+        },
+        is_collect(){
+            return this.detail.is_collect
         }
     },
     filters:{
@@ -176,6 +189,31 @@ export default {
                 this.isLoading = true;
                 if(result.success){
                     this.detail=result.data;
+                }
+            })
+        },
+        collect(){
+            api.collectTopic({
+                accesstoken:this.accesstoken,
+                topic_id:this.$route.params.topicId
+            })
+            .then((res)=>{
+                let result = res.data;
+                if(result.success){
+                    this.is_collect = false
+                    console.log(result)
+                }
+            })
+        },
+        decollect(){
+            api.deCollectTopic({
+                accesstoken:this.accesstoken,
+                topic_id:this.$route.params.topicId        
+            })
+            .then((res)=>{
+                let result = res.data;
+                if(result.success){
+                    this.is_collect = true
                 }
             })
         }
