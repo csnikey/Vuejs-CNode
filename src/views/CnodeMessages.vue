@@ -58,7 +58,7 @@ import api from '../store/api.js'
                     })
                     .then((res)=>{
                         this.loading = true;
-                        let result = res.data.data;console.log(result)
+                        let result = res.data.data;
                         let messages = result.has_read_messages;
                         let unmessages = result.hasnot_read_messages;
                         this.messages = unmessages.concat(messages);

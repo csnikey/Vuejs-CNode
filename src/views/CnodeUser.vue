@@ -11,8 +11,25 @@
                <p>{{user.score}} 积分</p>
            </div>
        </div>
-       <div class="">
-
+       <div class="recent_topic">
+            <h1>最近创建的话题</h1>
+            <div>
+                <ul v-for="topic in user.recent_topics">
+                    <li><img :src="topic.author.avatar_url"></li>
+                    <li><router-link :to="'/topic/'+topic.id">{{topic.title}}</router-link></li>
+                    <li>{{topic.last_reply_at|timeAgo}}</li>
+                </ul>
+            </div>
+       </div>
+       <div class="recent_topic">
+            <h1>最近参与的话题</h1>
+            <div>
+                <ul v-for="reply in user.recent_replies">
+                    <li><img :src="reply.author.avatar_url"></li>
+                    <li><router-link :to="'/topic/'+reply.id">{{reply.title}}</router-link></li>
+                    <li>{{reply.last_reply_at|timeAgo}}</li>
+                </ul>
+            </div>         
        </div>
    </div>
    <div v-else class="load">
@@ -23,13 +40,6 @@
 
 
 <style lang="stylus" scoped>
-h1
-    width 100px
-    height 200px
-ul
-    width 100%
-    background red
-    box-sizing border-box
 .load
     width 100%
     line-height 100px
@@ -57,7 +67,42 @@ ul
             margin-top 10px
             &:first-child
                 font-weight bold
-
+.recent_topic
+    margin-bottom 20px
+    h1
+        width 100%
+        text-indent 20px
+        line-height 50px
+        background #eee
+    div
+        width 100%
+        ul
+            width 100%
+            height 40px
+            line-height 40px
+            display flex
+            border-bottom 1px solid #f0f0f0
+            li
+                flex 1
+                height 40px
+                display flex
+                align-items center
+                justify-content center
+                &:nth-child(2)
+                    flex 4
+                    overflow hidden
+                    white-space nowrap
+                    text-overflow ellipsis
+                img
+                    height 70%
+                    display block
+                a 
+                    color #08c
+                    display block
+                    width 98%
+                    overflow hidden
+                    white-space nowrap
+                    text-overflow ellipsis
 </style>
 
 
@@ -89,7 +134,7 @@ ul
                     }else{
                         this.fetch();
                     }
-                    console.log(res);
+                    console.log(result)
                 })
             }
         },
