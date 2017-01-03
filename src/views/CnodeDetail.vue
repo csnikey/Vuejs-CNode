@@ -15,7 +15,7 @@
             </div>
             <div v-html="contenthtml"  class="content"></div>
             <template v-if="this.accesstoken">
-                <div class="collect decollect" @click="decollect" v-if="is_collect"><span>取消收藏</span></div>
+                <div class="collect decollect" @click="decollect" v-if="detail.is_collect"><span>取消收藏</span></div>
                 <div class="collect" @click="collect" v-else><span>收藏</span></div>
             </template>
             <div class="reply-num"><span>{{detail.reply_count}}</span>个回复</div>
@@ -23,8 +23,10 @@
                 <div class="reply-list">
                     <ul>
                         <li><img :src="reply.author.avatar_url"></li>
-                        <li>{{reply.author.loginname}} <span class="time">{{index+1}}楼 {{reply.create_at | timeAgo}}</span></li>
-                        <li><img src="../assets/like.svg" class="like"><span v-if="reply.ups.length">{{reply.ups.length}}</span>顶</li>
+                        <li>{{reply.author.loginname}} <span class="time">{{index+1}}楼 {{reply.create_at | timeAgo}}</span>
+                        </li>
+                        <li @click="up(reply.id,index)">
+                        <img src="../assets/like.svg" class="like"><span v-if="reply.ups.length">{{reply.ups.length}}</span>顶</li>
                     </ul>
                     <div v-html="repliesContent[index]"></div>
                 </div>
@@ -165,6 +167,9 @@ export default {
         },
         is_collect(){
             return this.detail.is_collect
+        },
+        reply_count(){
+            
         }
     },
     filters:{
@@ -200,8 +205,7 @@ export default {
             .then((res)=>{
                 let result = res.data;
                 if(result.success){
-                    this.is_collect = false
-                    console.log(result)
+                    this.detail.is_collect = false
                 }
             })
         },
@@ -213,8 +217,27 @@ export default {
             .then((res)=>{
                 let result = res.data;
                 if(result.success){
-                    this.is_collect = true
+                    this.detail.is_collect = true
                 }
+            })
+        },
+        up(replyId,index){
+            api.upReply({
+                accesstoken:this.accesstoken,
+                reply_id:replyId
+            })
+            .then((res)=>{
+                let result = res.data;
+                if(result.success){
+                    if(result.action=='up'){
+                        this.detail.replies[index].ups.push(this.accesstoken)
+                    }else{
+                         this.detail.replies[index].ups.pop()
+                    }
+                }
+            })
+            .catch((err)=>{
+                console.log(err)
             })
         }
     },
