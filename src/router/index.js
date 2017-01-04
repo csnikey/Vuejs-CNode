@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import CnodeTopicList from '../components/CnodeTopicList'
+import CnodeTopicList from '../views/CnodeTopicList'
 import CnodeDetail from '../views/CnodeDetail'
 import Cnode404 from '../views/Cnode404'
 import CnodeUser from '../views/CnodeUser'
