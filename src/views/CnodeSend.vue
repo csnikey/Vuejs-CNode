@@ -14,6 +14,13 @@
 			return {
 				
 			}
+		},
+		created(){
+			if(!this.$store.state.accesstoken){
+				this.$router.push({
+					path:'/login'
+				})
+			}
 		}
 	}
 </script>

@@ -41,10 +41,10 @@ export default new VueRouter({
           path:'/collection/:loginname',component:CnodeCollection
       },
       {
-          path: '*',component:Cnode404
+          path: '/error',component:Cnode404
       },
       {
-          path: '/error',component:Cnode404
+          path: '*',component:Cnode404
       }
   ]
 })

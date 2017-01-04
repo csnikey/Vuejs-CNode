@@ -167,9 +167,6 @@ export default {
         },
         is_collect(){
             return this.detail.is_collect
-        },
-        reply_count(){
-            
         }
     },
     filters:{
@@ -222,6 +219,13 @@ export default {
             })
         },
         up(replyId,index){
+            if(!this.accesstoken){
+                alert('请先登录!');
+                this.$router.push({
+                    path:'/login'
+                })
+                return;
+            }
             api.upReply({
                 accesstoken:this.accesstoken,
                 reply_id:replyId
