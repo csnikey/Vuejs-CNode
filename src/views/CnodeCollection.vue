@@ -121,6 +121,11 @@
                         this.fetch();
                     }
                 })
+                .catch((err)=>{
+                    this.$router.push({
+                        path : '/error'
+                    })
+                })
             }
         },
         watch:{

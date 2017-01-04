@@ -63,6 +63,11 @@ import api from '../store/api.js'
                         let unmessages = result.hasnot_read_messages;
                         this.messages = unmessages.concat(messages);
                     })
+                    .catch((err)=>{
+                        this.$router.push({
+                            path : '/error'
+                        })
+                    })
                 }
             }
         },

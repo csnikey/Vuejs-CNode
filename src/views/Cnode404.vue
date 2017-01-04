@@ -5,9 +5,13 @@
 </template>
 
 
-<style>
-
-    
+<style lang="stylus" scoped>
+div
+   width 200px
+   height 40px
+   line-height 40px
+   margin 40px auto 
+   text-align center
 </style>
 
 

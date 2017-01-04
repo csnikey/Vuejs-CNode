@@ -154,6 +154,11 @@
                         this.displayTop=true;
                     }
                 })
+                .catch((err)=>{
+                    this.$router.push({
+                        path : '/error'
+                    })
+                })
             },
             getList(){
                 if(this.progress) return;

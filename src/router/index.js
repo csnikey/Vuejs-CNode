@@ -42,6 +42,9 @@ export default new VueRouter({
       },
       {
           path: '*',component:Cnode404
+      },
+      {
+          path: '/error',component:Cnode404
       }
   ]
 })
