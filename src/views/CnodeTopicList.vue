@@ -194,4 +194,5 @@
             this.fetch(this.page)
         }
     }
+
 </script>
