@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const ext = requrie('extract-text-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
