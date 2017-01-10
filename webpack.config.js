@@ -1,5 +1,6 @@
-let path = require('path')
-let webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const ext = requrie('extract-text-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -31,7 +32,7 @@ module.exports = {
       },
       {
         test: /\.styl/,
-        loader:['css-loader','style-loader']
+        loader:['style-loader','css-loader','stylus-loader']
       }
     ]
   },
