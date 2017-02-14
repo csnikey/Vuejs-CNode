@@ -15,10 +15,12 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          css: extractTextPlugin.extract({
-            loader: 'css-loader',
-            fallbackLoader: 'vue-style-loader'
-          })
+          loaders:{
+            css: extractTextPlugin.extract({
+              use: ['css-loader','stylus-loader'],
+              fallback: 'vue-style-loader'
+            })
+          }
         }
       },
       {
@@ -71,9 +73,6 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new extractTextPlugin({
-      filename:'./assets/style.css',
-      allChunks:true
-    })
+    new extractTextPlugin('style.css')
   ])
 }
