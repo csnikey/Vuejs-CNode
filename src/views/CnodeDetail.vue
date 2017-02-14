@@ -13,7 +13,7 @@
                 <span>作者:{{detail.author.loginname}}</span>
                 <span>{{detail.visit_count}}次浏览</span>
             </div>
-            <div v-html="contenthtml"  class="content"></div>
+            <div v-html="contenthtml"  class="markdown-body"></div>
             <template v-if="this.accesstoken">
                 <div class="collect decollect" @click="decollect" v-if="detail.is_collect"><span>取消收藏</span></div>
                 <div class="collect" @click="collect" v-else><span>收藏</span></div>
@@ -28,7 +28,7 @@
                         <li @click="up(reply.id,index)">
                         <img src="../assets/like.svg" class="like"><span v-if="reply.ups.length">{{reply.ups.length}}</span>顶</li>
                     </ul>
-                    <div v-html="repliesContent[index]"></div>
+                    <div v-html="repliesContent[index]" class="markdown-body"></div>
                 </div>
             </div>
         </div>
@@ -39,6 +39,10 @@
 </template>
 
 <style lang="stylus" scoped>
+    .markdown-body 
+        box-sizing border-box;
+        margin 0 auto;
+        padding 10px;
     .msg
         width: 100%
         margin: 30px auto
@@ -110,8 +114,6 @@
         overflow: auto
         .reply-list
             border-top: 1px solid #eee
-            div p a
-                color: #08c
         ul
             display: flex
             li
@@ -141,7 +143,7 @@
 <script>
 import api from '../store/api.js'
 import filters from  '../filters'
-
+import 'github-markdown-css'
 export default {
     data(){
         return {
