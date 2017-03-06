@@ -10,7 +10,7 @@ import CnodeHeader from './components/CnodeHeader'
 export default {
   data(){
     return {
-      
+
     }
   },
   components:{

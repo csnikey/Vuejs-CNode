@@ -33,7 +33,7 @@
     text-align center
     img
         width 40px
-        margin 40px auto	
+        margin 40px auto
 .list a
     display flex
     border-bottom 1px solid #f0f0f0
