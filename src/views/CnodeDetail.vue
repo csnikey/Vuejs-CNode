@@ -39,7 +39,7 @@
 </template>
 
 <style lang="stylus" scoped>
-    .markdown-body 
+    .markdown-body
         box-sizing border-box;
         margin 0 auto;
         padding 10px;
@@ -195,6 +195,12 @@ export default {
                     this.detail=result.data;
                 }
             })
+            .catch((err)=>{
+                alert(err.message);
+                this.$router.push({
+                  'path':'/error'
+                })
+            })
         },
         collect(){
             api.collectTopic({
@@ -211,7 +217,7 @@ export default {
         decollect(){
             api.deCollectTopic({
                 accesstoken:this.accesstoken,
-                topic_id:this.$route.params.topicId        
+                topic_id:this.$route.params.topicId
             })
             .then((res)=>{
                 let result = res.data;

@@ -4,14 +4,42 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import CnodeTopicList from '../views/CnodeTopicList'
-import CnodeDetail from '../views/CnodeDetail'
-import Cnode404 from '../views/Cnode404'
-import CnodeUser from '../views/CnodeUser'
-import CnodeMessages from '../views/CnodeMessages'
-import CnodeLogin from '../views/CnodeLogin'
-import CnodeSend from '../views/CnodeSend'
-import CnodeCollection from '../views/CnodeCollection'
 
+const CnodeDetail = resolve => {
+  require.ensure(['../views/CnodeDetail'], () => {
+    resolve(require('../views/CnodeDetail'))
+  })
+}
+const Cnode404 = resolve => {
+  require.ensure(['../views/Cnode404'], () => {
+    resolve(require('../views/Cnode404'))
+  })
+}
+const CnodeUser = resolve => {
+  require.ensure(['../views/CnodeUser'], () => {
+    resolve(require('../views/CnodeUser'))
+  })
+}
+const CnodeMessages = resolve => {
+  require.ensure(['../views/CnodeMessages'], () => {
+    resolve(require('../views/CnodeMessages'))
+  })
+}
+const CnodeLogin = resolve => {
+  require.ensure(['../views/CnodeLogin'], () => {
+    resolve(require('../views/CnodeLogin'))
+  })
+}
+const CnodeSend = resolve => {
+  require.ensure(['../views/CnodeSend'], () => {
+    resolve(require('../views/CnodeSend'))
+  })
+}
+const CnodeCollection = resolve => {
+  require.ensure(['../views/CnodeCollection'], () => {
+    resolve(require('../views/CnodeCollection'))
+  })
+}
 
 export default new VueRouter({
   mode: 'history',
