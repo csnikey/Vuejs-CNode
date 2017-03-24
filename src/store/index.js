@@ -12,7 +12,7 @@ export default new Vuex.Store({
         tab:'全部'
     },
     mutations:{
- 		loginOut(state,payload){
+ 		    loginOut(state,payload){
             localStorage.removeItem('cnodeUser');
             state.loginname = '';
             state.accesstoken = '';

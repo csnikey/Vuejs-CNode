@@ -3,8 +3,11 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import CnodeTopicList from '../views/CnodeTopicList'
-
+const CnodeTopicList = resolve => {
+  require.ensure(['../views/CnodeTopicList'], () => {
+    resolve(require('../views/CnodeTopicList'))
+  })
+}
 const CnodeDetail = resolve => {
   require.ensure(['../views/CnodeDetail'], () => {
     resolve(require('../views/CnodeDetail'))
