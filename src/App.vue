@@ -19,6 +19,6 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-@import './assets/common.styl'
+<style lang="scss">
+@import './assets/common.scss'
 </style>

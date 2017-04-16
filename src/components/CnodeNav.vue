@@ -10,54 +10,59 @@
                 <router-link tag="li" to="/topics/job">招聘</router-link>
             </ul>
         </li>
-        
+
         <router-link tag="li" :to="'/message/'+accesstoken" v-if="accesstoken">
             消息<span class="message" v-if="messageCount">{{messageCount}}</span>
         </router-link>
         <router-link tag="li" to="/login" v-else>消息</router-link>
-        
+
         <li @click="aboutMeDisplay=!aboutMeDisplay" v-if="loginname">我<i class="triangle"></i>
             <ul v-show="aboutMeDisplay">
                 <router-link tag="li" :to="'/user/'+loginname">我的主页</router-link>
-                <li @click="loginOut">退出</li> 
+                <li @click="loginOut">退出</li>
             </ul>
         </li>
         <router-link tag="li" to="/login" v-else>我</router-link>
     </ul>
 </template>
 
-<style lang="stylus" scoped>
-    .nav
-        display: flex
-        background: #f6f6f6
-        width: 100%
-        border-bottom: 1px solid #f0f0f0
-        > li
-            flex: 1
-            text-align: center
-            height: 40px
-            line-height: 40px
-            color: #80bd01
-            position: relative;
-            ul
-                border-top: 1px solid #f0f0f0
-                li
-                    color: #80bd01
-                    background: #f6f6f6
-                    border-bottom: 1px solid #f0f0f0
-            .message
-                display: block
-                width: 18px
-                height: 18px
-                background: #80bd01
-                color: #fff
-                text-align: center
-                border-radius: 100%
-                line-height: 18px
-                position: absolute
-                right: 20px
-                top: 12px
-                font-size: 12px
+<style lang="scss" scoped>
+.nav {
+  display: flex;
+  background: #f6f6f6;
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+  > li {
+    flex: 1;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    color: #80bd01;
+    position: relative;
+    ul {
+      border-top: 1px solid #f0f0f0;
+      li {
+        color: #80bd01;
+        background: #f6f6f6;
+        border-bottom: 1px solid #f0f0f0;
+      }
+    }
+    .message {
+      display: block;
+      width: 18px;
+      height: 18px;
+      background: #80bd01;
+      color: #fff;
+      text-align: center;
+      border-radius: 100%;
+      line-height: 18px;
+      position: absolute;
+      right: 20px;
+      top: 12px;
+      font-size: 12px;
+    }
+  }
+}
 </style>
 
 <script>

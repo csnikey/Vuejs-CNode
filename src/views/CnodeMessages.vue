@@ -13,25 +13,32 @@
 </template>
 
 
-<style lang="stylus" scoped>
-.messageList
-    width 100%
-    li
-        box-sizing border-box
-        line-height 20px
-        padding 8px 10px
-        border-bottom 1px solid #ddd
-        a
-            color #08c
-    .has-read
-        background #eff6fa
-.load
-    width: 100%
-    line-height: 100px
-    text-align: center
-    img
-        width:40px
-        margin:40px auto
+<style lang="scss" scoped>
+.messageList {
+  width: 100%;
+  li {
+    box-sizing: border-box;
+    line-height: 20px;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+    a {
+      color: #08c;
+    }
+  }
+  .has-read {
+    background: #eff6fa;
+  }
+}
+
+.load {
+  width: 100%;
+  line-height: 100px;
+  text-align: center;
+  img {
+    width: 40px;
+    margin: 40px auto;
+  }
+}
 </style>
 
 <script>

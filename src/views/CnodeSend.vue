@@ -4,15 +4,15 @@
 	</div>
 </template>
 
-<style lang="stylus">
-	
+<style lang="scss" scoped>
+
 </style>
 
 <script>
 	export default{
 		data(){
 			return {
-				
+
 			}
 		},
 		created(){

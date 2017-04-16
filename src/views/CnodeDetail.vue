@@ -38,104 +38,135 @@
     </div>
 </template>
 
-<style lang="stylus" scoped>
-    .markdown-body
-        box-sizing border-box;
-        margin 0 auto;
-        padding 10px;
-    .msg
-        width: 100%
-        margin: 30px auto
-        text-align: center
-        img
-            width:40px
-            margin:40px auto
-    .title
-        line-height: 30px
-        padding: 10px
-        display: flex
-        div
-            flex: 7
-            font-size: 20px
-            &:first-child
-                flex: 1
-        span
-            padding: 4px
-            border-radius: 4px
-            text-align: center
-            background: #e5e5e5
-            color: #999
-            font-weight: bold
-            font-size: 14px
-        .good
-            padding: 4px
-            border-radius: 4px
-            background: #80bd01
-            color: #fff
-            text-align: center
-            font-weight: bold
-    .info
-        display: inline-flex
-        width: 100%
-        padding: 0 10px
-        span
-            flex: 1
-            text-align: center
-            color: #aaa
-            font-size: 12px
-    .collect
-        width: 100%
-        height: 40px
-        text-align: right
-        line-height: 40px
-        span
-            padding: 10px 20px
-            border-radius: 4px
-            background: #80bd01
-            color: #fff
-            text-align: center
-            font-weight: bold
-            margin-right: 10px
-    .decollect
-        span
-            background #eee
-            color #333
-    .reply-num
-        width: 100%
-        padding: 0 10px
-        line-height: 40px
-        height: 40px
-        color: #aaa
-        span
-            margin-right: 4px
-    .reply-lists
-        width: 100%
-        padding: 10px
-        overflow: auto
-        .reply-list
-            border-top: 1px solid #eee
-        ul
-            display: flex
-            li
-                flex: 1
-                display: flex
-                height: 40px
-                line-height: 40px
-                justify-content: center
-                align-items: center
-                &:nth-child(2)
-                    flex: 6
-                    justify-content: flex-start
-            img
-                width: 50%
-                &.like
-                    width: 14px
-                    margin-right: 4px
-        div
-            line-height: 20px
-    .time
-        color: #08c
-        margin-left: 10px
+<style lang="scss" scoped>
+.markdown-body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.msg {
+  width: 100%;
+  margin: 30px auto;
+  text-align: center;
+  img {
+    width: 40px;
+    margin: 40px auto;
+  }
+}
+
+.title {
+  line-height: 30px;
+  padding: 10px;
+  display: flex;
+  div {
+    flex: 7;
+    font-size: 20px;
+    &:first-child {
+      flex: 1;
+    }
+  }
+  span {
+    padding: 4px;
+    border-radius: 4px;
+    text-align: center;
+    background: #e5e5e5;
+    color: #999;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .good {
+    padding: 4px;
+    border-radius: 4px;
+    background: #80bd01;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.info {
+  display: inline-flex;
+  width: 100%;
+  padding: 0 10px;
+  span {
+    flex: 1;
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
+  }
+}
+
+.collect {
+  width: 100%;
+  height: 40px;
+  text-align: right;
+  line-height: 40px;
+  span {
+    padding: 10px 20px;
+    border-radius: 4px;
+    background: #80bd01;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}
+
+.decollect span {
+  background: #eee;
+  color: #333;
+}
+
+.reply-num {
+  width: 100%;
+  padding: 0 10px;
+  line-height: 40px;
+  height: 40px;
+  color: #aaa;
+  span {
+    margin-right: 4px;
+  }
+}
+
+.reply-lists {
+  width: 100%;
+  padding: 10px;
+  overflow: auto;
+  .reply-list {
+    border-top: 1px solid #eee;
+  }
+  ul {
+    display: flex;
+    li {
+      flex: 1;
+      display: flex;
+      height: 40px;
+      line-height: 40px;
+      justify-content: center;
+      align-items: center;
+      &:nth-child(2) {
+        flex: 6;
+        justify-content: flex-start;
+      }
+    }
+    img {
+      width: 50%;
+      &.like {
+        width: 14px;
+        margin-right: 4px;
+      }
+    }
+  }
+  div {
+    line-height: 20px;
+  }
+}
+
+.time {
+  color: #08c;
+  margin-left: 10px;
+}
 
 </style>
 
