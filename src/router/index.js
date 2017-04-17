@@ -48,7 +48,7 @@ export default new VueRouter({
   mode: 'history',
   routes: [
       {
-          path: '/(index.html)?',redirect: '/topics/all'
+          path: '/',redirect: '/topics/all'
       },
       {
           path: '/topics/:tab',component: CnodeTopicList
