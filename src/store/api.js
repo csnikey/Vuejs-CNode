@@ -1,47 +1,47 @@
 import axios from 'axios'
-
-const baseUrl = 'https://cnodejs.org/api/v1';
-export default { 
+import qs from 'qs'
+axios.defaults.baseURL = 'https://cnodejs.org/api/v1';
+export default {
     getTopics(params){
-        return axios.get(`${baseUrl}/topics?tab=${params.tab}&page=${params.page}&limit=${params.limit}&mdrender=${params.mdrender}`)
+        return axios.get(`/topics?tab=${params.tab}&page=${params.page}&limit=${params.limit}&mdrender=${params.mdrender}`)
     },
     getTopic(params){
-        return axios.get(`${baseUrl}/topic/${params.accesstoken}?mdrender=${params.mdrender}`)
+        return axios.get(`/topic/${params.accesstoken}?mdrender=${params.mdrender}`)
     },
     createTopic(params){
-        return axios.post(`${baseUrl}/topics`,params)
+        return axios.post(`/topics`,params)
     },
     updateTopic(params){
-        return axios.post(`${baseUrl}/topics/update`,params)
+        return axios.post(`/topics/update`,params)
     },
     collectTopic(params){
-        return axios.post(`${baseUrl}/topic_collect/collect`,params)
+        return axios.post(`/topic_collect/collect`,params)
     },
     deCollectTopic(params){
-        return axios.post(`${baseUrl}/topic_collect/de_collect`,params)
+        return axios.post(`/topic_collect/de_collect`,params)
     },
     getCollectTopics(params){
-        return axios.get(`${baseUrl}/topic_collect/${params.loginname}`)
+        return axios.get(`/topic_collect/${params.loginname}`)
     },
     createReply(params){
-        return axios.post(`${baseUrl}/topic/${params.topic_id}/replies`,params)
+        return axios.post(`/topic/${params.topic_id}/replies`,params)
     },
     upReply(params){
-        return axios.post(`${baseUrl}/reply/${params.reply_id}/ups`,params)
+        return axios.post(`/reply/${params.reply_id}/ups`,params)
     },
     getUser(params){
-        return axios.get(`${baseUrl}/user/${params.loginname}`)
+        return axios.get(`/user/${params.loginname}`)
     },
     checkAccessToken(params){
-        return axios.post(`${baseUrl}/accesstoken`,params)
+        return axios.post(`/accesstoken`,params)
     },
     getUnreadMessages(params){
-        return axios.get(`${baseUrl}/message/count?accesstoken=${params.accesstoken}`)
+        return axios.get(`/message/count?accesstoken=${params.accesstoken}`)
     },
     getMessages(params){
-        return axios.get(`${baseUrl}/messages?accesstoken=${params.accesstoken}&mdrender=${params.mdrender}`)
+        return axios.get(`/messages?accesstoken=${params.accesstoken}&mdrender=${params.mdrender}`)
     },
     remarkTopic(params){
-        return axios.post(`${baseUrl}/message/mark_all`,params)
-    }  
-}  
+        return axios.post(`/message/mark_all`,params)
+    }
+}
