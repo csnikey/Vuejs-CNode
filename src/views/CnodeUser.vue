@@ -140,7 +140,7 @@
 
 <script>
     import api from '../store/api.js'
-    import filters from '../filters'
+    import utils from '../utils'
     export default{
         data(){
             return {
@@ -176,7 +176,7 @@
         },
         filters:{
             timeAgo(val){
-                return filters.timeAgo(val)
+                return utils.timeAgo(val)
             }
         },
         watch:{

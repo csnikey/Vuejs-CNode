@@ -106,7 +106,7 @@
 
 <script>
     import api from '../store/api.js'
-    import filters from '../filters'
+    import utils from '../utils'
      export default{
         data(){
             return {
@@ -116,10 +116,10 @@
         },
         filters:{
             tab(val,isTop,isGood){
-               return filters.tab(val,isTop,isGood)
+               return utils.tab(val,isTop,isGood)
             },
             timeAgo(val){
-                return filters.timeAgo(val)
+                return utils.timeAgo(val)
             }
         },
         computed:{

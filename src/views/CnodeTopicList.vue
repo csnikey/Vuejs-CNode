@@ -119,7 +119,7 @@
 
 <script>
     import api from '../store/api.js'
-    import filters from '../filters'
+    import utils from '../utils'
     import CnodeNav from '../components/CnodeNav'
     export default{
         data(){
@@ -135,10 +135,10 @@
         },
         filters:{
             tab(val,isTop,isGood){
-               return filters.tab(val,isTop,isGood)
+               return utils.tab(val,isTop,isGood)
             },
             timeAgo(val){
-                return filters.timeAgo(val)
+                return utils.timeAgo(val)
             }
         },
         computed:{
