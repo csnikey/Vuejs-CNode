@@ -6,7 +6,7 @@
     </ul>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped >
 .header {
   background: #444;
   display: flex;
